@@ -8,7 +8,7 @@ export function WelcomePage({ onSelectName }: WelcomePageProps) {
   return (
     <div className="container mx-auto px-4 py-12 flex flex-col items-center">
       {/* MODIFIED: Use img tag for logo */}
-      <img src="/logo.png" alt="Hopes Academy Logo" className="w-32 h-32 object-contain mb-8" />
+      <img src="/logo_bold.jpeg" alt="Hopes Academy Logo" className="w-32 h-32 object-contain mb-8" />
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
         Welcome to <span className="text-green-500">Hopes Academy</span>
       </h2>

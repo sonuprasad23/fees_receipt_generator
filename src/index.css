@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Define CSS variables for theming */
+  :root {
+    --background: 0 0% 100%; /* Light mode background: white */
+    --foreground: 222.2 47.4% 11.2%; /* Light mode text: dark grayish blue */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%; /* Light mode border color */
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  :root[class~="dark"] {
+    --background: 224 71% 4%; /* Dark mode background: very dark blue */
+    --foreground: 213 31% 91%; /* Dark mode text: light gray */
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%; /* Dark mode border color */
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem; /* Consistent radius */
+  }
+
+  /* Apply base styles using direct CSS variable assignment */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5; /* Sensible default line height */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Sensible default font stack */
+  }
+
+  body {
+    /*
+     * MODIFIED: Directly use CSS variables for background and foreground color.
+     * The Tailwind utility classes `bg-background` and `text-foreground`
+     * will still be generated and can be used on other elements.
+     */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1; /* Your existing font settings */
+  }
+
+  * {
+    /*
+     * Sets a default border-color for all elements IF they have a border style/width.
+     * Does not add a border to all elements.
+     */
+    border-color: hsl(var(--border));
+    /*
+     * Optional: Apply box-sizing globally for more predictable layouts.
+     * Tailwind's preflight often includes this or a similar reset.
+     */
+    box-sizing: border-box;
+  }
+
+  /* Custom style for date input picker icon to be visible in dark theme */
+  /* This is a general approach, might need tweaks based on browser */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) sepia(0.3) saturate(3) hue-rotate(80deg); /* Adjusted for better visibility on dark and light backgrounds */
+    cursor: pointer;
+  }
+  /* For Firefox, date picker styling is harder and often relies on system theme or more complex SVG overrides */
+}
